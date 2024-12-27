@@ -37,5 +37,5 @@ app.post('/webhook', (req, res) => {
 
 // 🚀 서버 실행
 app.listen(4000, () => {
-  console.log('✅ Webhook listener is running on http://10.10.100.220:4000');
+  console.log('✅ Webhook listener is running');
 });
