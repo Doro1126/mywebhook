@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 
 const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET || 'default_token';
-const SCRIPT_PATH = process.env.SCRIPT_PATH || '/root/lab/test.sh';
+const SCRIPT_PATH = process.env.SCRIPT_PATH || '/lab/main.sh';
 
 // 🔑 Webhook 엔드포인트
 app.post('/webhook', (req, res) => {
@@ -22,7 +22,7 @@ app.post('/webhook', (req, res) => {
   console.log('✅ Token Validated, Executing Script...');
 
   // 스크립트를 /root/lab 디렉터리에서 실행
-  exec(`./test.sh`, { cwd: '/root/lab' }, (error, stdout, stderr) => {
+  exec(`./main.sh`, { cwd: '/lab' }, (error, stdout, stderr) => {
     if (error) {
       console.error(`❌ Script execution error: ${error.message}`);
       return res.status(500).send(`Error: ${error.message}`);
